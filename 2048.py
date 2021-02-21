@@ -45,8 +45,8 @@ def to_score(m):
     return [[_to_score(c) for c in row] for row in m]
 
 
-def find_best_move(board):
-    return ai.find_best_move(board)
+def find_best_move(board, score):
+    return ai.find_best_move(board, score)
 
 
 def movename(move):
@@ -68,7 +68,7 @@ def play_game(gamectrl):
         moveno += 1
         board = gamectrl.get_board()
         move_time = time.time()
-        move = find_best_move(board)
+        move = find_best_move(board, gamectrl.get_score())
         moveTimes.append(time.time() - move_time)
         if move < 0:
             break

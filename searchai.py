@@ -15,14 +15,21 @@ move_args = [UP, DOWN, LEFT, RIGHT]
 # Description: The logic to beat the game. Based on expectimax algorithm.
 
 
-def find_best_move(board):
+def find_best_move(board, score):
     """
     find the best move for the next turn.
     """
 
     global UP, DOWN, LEFT, RIGHT
     global move_args
-    max_depth = 3
+
+    max_depth = 1
+    if score <= 10000:
+        max_depth += 0
+    elif score <= 20000:
+        max_depth += 1
+    else:
+        max_depth += 2
 
     pool = mp.Pool(mp.cpu_count())
 
